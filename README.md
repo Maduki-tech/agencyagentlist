@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Agency Agent Lookup
 
-## Getting Started
+Browse every agent from [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) with search, division filters, sorting, and full markdown detail pages.
 
-First, run the development server:
+## Features
+
+- Live data from GitHub (no vendored agent files)
+- Search by name, description, vibe, or path
+- Filter by division/type
+- Sort by name or type
+- Click any agent to read the full markdown
+
+## Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+cp .env.example .env.local
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Optional: GitHub token
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The app works without authentication for public repo access. For higher GitHub API rate limits during index builds, set:
 
-## Learn More
+```bash
+GITHUB_TOKEN=your_token_here
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `pnpm dev` — start dev server
+- `pnpm build` — production build
+- `pnpm start` — run production server
+- `pnpm lint` — ESLint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Data source
 
-## Deploy on Vercel
+Agent list is built from:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. `divisions.json` for division labels and colors
+2. GitHub Trees API for all `.md` files under division folders
+3. Raw GitHub content for frontmatter and markdown bodies
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Responses are cached server-side for one hour.
