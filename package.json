@@ -2,6 +2,24 @@
   "name": "agency-agent-list",
   "version": "0.1.0",
   "private": true,
+  "description": "Browse and search AI agents from msitarzewski/agency-agents using live GitHub data.",
+  "license": "MIT",
+  "author": "Maduki-tech",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Maduki-tech/agencyagentlist.git"
+  },
+  "homepage": "https://github.com/Maduki-tech/agencyagentlist#readme",
+  "bugs": {
+    "url": "https://github.com/Maduki-tech/agencyagentlist/issues"
+  },
+  "keywords": [
+    "ai-agents",
+    "agency-agents",
+    "github",
+    "nextjs",
+    "directory"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
