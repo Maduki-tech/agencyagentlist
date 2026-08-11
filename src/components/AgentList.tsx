@@ -10,11 +10,11 @@ type AgentListProps = {
 export function AgentList({ agents }: AgentListProps) {
   if (agents.length === 0) {
     return (
-      <div className="rounded-xl border border-dashed border-zinc-300 px-6 py-12 text-center dark:border-zinc-700">
-        <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
+      <div className="rounded-2xl border border-dashed border-[var(--line)] bg-white/50 px-6 py-16 text-center">
+        <p className="text-lg font-semibold text-[var(--ink)]">
           No agents match your search
         </p>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+        <p className="mt-2 text-sm text-[var(--muted)]">
           Try another keyword or clear the type filter.
         </p>
       </div>
@@ -22,38 +22,24 @@ export function AgentList({ agents }: AgentListProps) {
   }
 
   return (
-    <ul className="divide-y divide-zinc-200 rounded-xl border border-zinc-200 bg-white dark:divide-zinc-800 dark:border-zinc-800 dark:bg-zinc-950">
+    <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {agents.map((agent) => (
         <li key={agent.path}>
           <Link
             href={agentPathToHref(agent.path)}
-            className="flex items-start gap-4 px-4 py-4 transition hover:bg-zinc-50 dark:hover:bg-zinc-900/60 sm:px-5"
+            className="agent-card group flex h-full min-h-48 flex-col rounded-2xl border border-[var(--line)] bg-white/75 p-5"
           >
-            <span className="text-2xl leading-none" aria-hidden>
-              {agent.emoji}
-            </span>
-            <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center gap-2">
-                <h2 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-                  {agent.name}
-                </h2>
-                <span
-                  className="rounded-full px-2 py-0.5 text-xs font-medium text-white"
-                  style={{ backgroundColor: agent.divisionColor }}
-                >
-                  {agent.divisionLabel}
-                </span>
+            <div className="mb-6 flex items-start justify-between gap-3">
+              <span className="grid size-11 place-items-center rounded-xl bg-[#f1eee7] text-2xl leading-none" aria-hidden>{agent.emoji}</span>
+              <span className="text-xl text-[#b8b9b2] transition group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[var(--coral)]" aria-hidden>↗</span>
+            </div>
+            <div className="mt-auto">
+              <div className="mb-2 flex flex-wrap items-center gap-2">
+                <h2 className="text-lg font-semibold tracking-tight text-[var(--ink)]">{agent.name}</h2>
+                <span className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white" style={{ backgroundColor: agent.divisionColor }}>{agent.divisionLabel}</span>
               </div>
-              {agent.description ? (
-                <p className="mt-1 line-clamp-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  {agent.description}
-                </p>
-              ) : null}
-              {agent.vibe ? (
-                <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-500">
-                  {agent.vibe}
-                </p>
-              ) : null}
+              {agent.description ? <p className="line-clamp-2 text-sm leading-5 text-[var(--muted)]">{agent.description}</p> : null}
+              {agent.vibe ? <p className="mt-3 line-clamp-1 text-xs italic text-[#969990]">“{agent.vibe}”</p> : null}
             </div>
           </Link>
         </li>

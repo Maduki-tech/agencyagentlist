@@ -2,8 +2,13 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #18181b;
+  --background: #f5f4ef;
+  --foreground: #14213d;
+  --ink: #14213d;
+  --muted: #6b7280;
+  --line: #deded7;
+  --coral: #e76f51;
+  --mint: #dcefe8;
 }
 
 @theme inline {
@@ -13,15 +18,41 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #09090b;
-    --foreground: #f4f4f5;
-  }
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #f7c4b5;
+  color: var(--ink);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), sans-serif;
+  background-image: radial-gradient(circle at 88% 0%, rgba(231, 111, 81, .13), transparent 27rem), radial-gradient(circle at 5% 35%, rgba(137, 187, 169, .12), transparent 24rem);
+}
+
+button, a, input, select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(231, 111, 81, .45);
+  outline-offset: 3px;
+}
+
+.agent-card {
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.agent-card:hover {
+  transform: translateY(-2px);
+  border-color: #c9c9c0;
+  box-shadow: 0 14px 30px rgba(20, 33, 61, .08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agent-card { transition: none; }
 }

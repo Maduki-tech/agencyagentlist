@@ -21,25 +21,21 @@ export default async function AgentPage({ params }: AgentPageProps) {
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col px-4 py-8 sm:px-6 sm:py-12">
-      <div className="mb-8 space-y-4">
-        <Link
-          href="/"
-          className="inline-flex text-sm font-medium text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-        >
-          ← Back to overview
-        </Link>
+    <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col px-5 py-7 sm:px-8 sm:py-10">
+      <div className="mb-10 space-y-8">
+        <nav className="flex items-center justify-between border-b border-[var(--line)] pb-5">
+          <Link href="/" className="flex items-center gap-2 text-sm font-bold tracking-tight text-[var(--ink)]"><span className="grid size-8 place-items-center rounded-lg bg-[var(--ink)] text-base text-white">✦</span>agency<span className="font-normal text-[var(--coral)]">/</span>agents</Link>
+          <Link href="/" className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--muted)] hover:text-[var(--coral)]">← All agents</Link>
+        </nav>
 
-        <div className="space-y-3">
+        <div className="space-y-4 rounded-3xl border border-[var(--line)] bg-white/70 p-6 sm:p-9">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="text-3xl" aria-hidden>
-              {agent.emoji}
-            </span>
-            <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
+            <span className="grid size-14 place-items-center rounded-2xl bg-[#f1eee7] text-3xl" aria-hidden>{agent.emoji}</span>
+            <h1 className="text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-5xl">
               {agent.name}
             </h1>
             <span
-              className="rounded-full px-2.5 py-1 text-xs font-medium text-white"
+              className="rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-white"
               style={{ backgroundColor: agent.divisionColor }}
             >
               {agent.divisionLabel}
@@ -47,20 +43,20 @@ export default async function AgentPage({ params }: AgentPageProps) {
           </div>
 
           {agent.description ? (
-            <p className="text-base text-zinc-600 dark:text-zinc-400">
+            <p className="max-w-2xl text-base leading-7 text-[var(--muted)]">
               {agent.description}
             </p>
           ) : null}
 
           {agent.vibe ? (
-            <p className="text-sm text-zinc-500 dark:text-zinc-500">{agent.vibe}</p>
+            <p className="text-sm italic text-[#969990]">“{agent.vibe}”</p>
           ) : null}
 
           <Link
             href={getGitHubBlobUrl(agent.path)}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-zinc-100"
+            className="inline-flex text-sm font-semibold text-[var(--coral)] underline decoration-[#f1b6a5] underline-offset-4 transition hover:text-[var(--ink)]"
           >
             Open source file on GitHub
           </Link>

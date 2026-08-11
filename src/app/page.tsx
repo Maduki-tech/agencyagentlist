@@ -18,29 +18,31 @@ export default async function HomePage() {
     .sort((a, b) => a.label.localeCompare(b.label));
 
   return (
-    <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-4 py-8 sm:px-6 sm:py-12">
-      <header className="mb-8 space-y-3">
-        <p className="text-sm font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
-          Agency Agents
-        </p>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-5 py-7 sm:px-8 sm:py-10">
+      <header className="mb-10">
+        <nav className="mb-16 flex items-center justify-between border-b border-[var(--line)] pb-5">
+          <Link href="/" className="flex items-center gap-2 text-sm font-bold tracking-tight text-[var(--ink)]">
+            <span className="grid size-8 place-items-center rounded-lg bg-[var(--ink)] text-base text-white">✦</span>
+            agency<span className="font-normal text-[var(--coral)]">/</span>agents
+          </Link>
+          <Link href={getUpstreamRepoUrl()} target="_blank" rel="noreferrer" className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)] transition hover:text-[var(--coral)]">
+            GitHub ↗
+          </Link>
+        </nav>
+        <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
           <div>
-            <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50 sm:text-4xl">
-              Agent Lookup
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-[var(--coral)]">The specialist directory</p>
+            <h1 className="max-w-3xl text-5xl font-semibold leading-[.98] tracking-[-0.055em] text-[var(--ink)] sm:text-7xl">
+              Find the right<br /><span className="text-[var(--coral)]">mind</span> for the job.
             </h1>
-            <p className="mt-2 max-w-2xl text-sm text-zinc-600 dark:text-zinc-400">
-              Browse every agent from the upstream repository. Search, filter by
-              division, and open the full markdown for any specialist.
+            <p className="mt-6 max-w-xl text-base leading-7 text-[var(--muted)]">
+              A living collection of specialist AI agents from Agency. Explore their unique skills, working styles, and operating manuals.
             </p>
           </div>
-          <Link
-            href={getUpstreamRepoUrl()}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900"
-          >
-            View on GitHub
-          </Link>
+          <div className="hidden text-right md:block">
+            <p className="font-mono text-5xl font-medium tracking-[-0.06em] text-[var(--ink)]">{agents.length}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">agents indexed</p>
+          </div>
         </div>
       </header>
 
