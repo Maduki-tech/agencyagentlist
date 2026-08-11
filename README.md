@@ -44,3 +44,4 @@ Agent list is built from:
 3. Raw GitHub content for frontmatter and markdown bodies
 
 Responses are cached server-side for one hour.
+# agencyagentlist
