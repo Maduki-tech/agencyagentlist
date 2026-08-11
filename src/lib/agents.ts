@@ -12,12 +12,12 @@ import type {
   SortOption,
 } from "@/lib/types";
 
-function slugFromPath(path: string): string {
+export function slugFromPath(path: string): string {
   const filename = path.split("/").pop() ?? path;
   return filename.replace(/\.md$/, "");
 }
 
-function titleFromSlug(slug: string): string {
+export function titleFromSlug(slug: string): string {
   return slug
     .replace(/^[a-z]+-/, "")
     .split("-")
@@ -25,7 +25,7 @@ function titleFromSlug(slug: string): string {
     .join(" ");
 }
 
-async function mapConcurrent<T, R>(
+export async function mapConcurrent<T, R>(
   items: T[],
   limit: number,
   fn: (item: T) => Promise<R>,
@@ -53,7 +53,7 @@ function parseDivisions(raw: string): DivisionsConfig {
   return JSON.parse(raw) as DivisionsConfig;
 }
 
-function parseFrontmatterLine(line: string): [string, string] | null {
+export function parseFrontmatterLine(line: string): [string, string] | null {
   const colonIndex = line.indexOf(":");
   if (colonIndex === -1) {
     return null;
@@ -72,7 +72,7 @@ function parseFrontmatterLine(line: string): [string, string] | null {
   return [key, value];
 }
 
-function parseFrontmatterFallback(raw: string): {
+export function parseFrontmatterFallback(raw: string): {
   data: Record<string, string>;
   content: string;
 } {
@@ -113,7 +113,7 @@ function parseAgentMarkdown(raw: string): {
   }
 }
 
-function buildSummary(
+export function buildSummary(
   path: string,
   raw: string,
   divisions: DivisionsConfig,
