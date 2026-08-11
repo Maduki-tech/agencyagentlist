@@ -25,9 +25,20 @@ export default async function HomePage() {
             <span className="grid size-8 place-items-center rounded-lg bg-[var(--ink)] text-base text-white">✦</span>
             agency<span className="font-normal text-[var(--coral)]">/</span>agents
           </Link>
-          <Link href={getUpstreamRepoUrl()} target="_blank" rel="noreferrer" className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)] transition hover:text-[var(--coral)]">
-            GitHub ↗
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link href={getUpstreamRepoUrl()} target="_blank" rel="noreferrer" className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)] transition hover:text-[var(--coral)]">
+              GitHub ↗
+            </Link>
+            <Link
+              href="https://github.com/Maduki-tech/agencyagentlist"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 rounded-full border border-[var(--line)] px-3.5 py-1.5 text-sm font-semibold text-[var(--ink)] transition hover:border-[var(--coral)] hover:text-[var(--coral)]"
+            >
+              <span aria-hidden="true" className="leading-none">★</span>
+              Star
+            </Link>
+          </div>
         </nav>
         <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
           <div>
